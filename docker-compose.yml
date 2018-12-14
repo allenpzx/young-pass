@@ -15,6 +15,6 @@ services:
       - "3000"
     entrypoint:
       - "yarn"
-      - "prod"
+#      - "prod"
     volumes:
       - "./:/usr/src/app"
