@@ -14,7 +14,6 @@ services:
   web:
     container_name: ${PROJECT_NAME}-stage-node
     environment: 
-      WECHAT_BACK_URI: test.wechat.heyyoung.net
     restart: always
     networks:
       - default
