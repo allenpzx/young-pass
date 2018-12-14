@@ -1,0 +1,24 @@
+version: '2'
+services:
+ nginx:
+    container_name: ${PROJECT_NAME}-prod-nginx
+    environment:
+      VIRTUAL_HOST: www.heyyoung.com.cn,${PROD_VIRTUAL_HOST}
+      LETSENCRYPT_HOST: www.heyyoung.com.cn,${PROD_VIRTUAL_HOST}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+      WECHAT_CALLBACK_URI: ${PROD_WECHAT_CALLBACK_URI}
+    networks:
+      - nginx-proxy
+      - default
+  
+ web:
+    container_name: ${PROJECT_NAME}-prod-node
+    restart: always
+    networks:
+      - default
+
+
+networks:
+  nginx-proxy:
+    external:
+      name: nginxproxyservice_default

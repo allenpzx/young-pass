@@ -1,0 +1,40 @@
+image: williamyeh/ansible:alpine3
+
+stages:
+  - build
+  - deploy
+
+build-stage:
+  image: node:alpine
+  stage: build
+  before_script:
+    - yarn --force
+  script:
+    - yarn build
+    - tar -cf package.tar --exclude=./package.tar ./
+    - ls -al ./package.tar
+  artifacts:
+    name: "${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}"
+    expire_in: 60 minutes
+    paths:
+    - package.tar
+  only:
+    - /^build-#test.*$/
+
+deploy-stage:
+  stage: deploy
+  before_script:
+    - echo "https://mirrors.ustc.edu.cn/alpine/latest-stable/main" > /etc/apk/repositories
+    - echo "https://mirrors.ustc.edu.cn/alpine/latest-stable/community" >> /etc/apk/repositories
+    - apk update && apk --no-cache add git bash openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan 172.19.61.235 >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  script:
+    - ansible-playbook -i ./ansible/inventory/stage ./ansible/playbooks/deploy.yml -e "project_name=$CI_PROJECT_PATH src=$PWD env=stage"
+  only:
+    - /^build-#test.*$/

@@ -1,0 +1,20 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./:/var/www:ro
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
+
+  web:
+    image: node
+    container_name: ${PROJECT_NAME}-node
+    working_dir: /usr/src/app
+    expose:
+      - "3000"
+    entrypoint:
+      - "yarn"
+      - "prod"
+    volumes:
+      - "./:/usr/src/app"

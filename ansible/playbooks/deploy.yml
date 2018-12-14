@@ -1,0 +1,21 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Creating the directory
+    file: path=/var/projects/{{ project_name }}-{{ env }}/ state=directory
+ 
+  - name: copy
+    unarchive:
+      src: "{{ src }}/package.tar"
+      dest: /var/projects/{{ project_name }}-{{ env }}/
+
+  - name: stop project
+    shell: docker-compose -f docker-compose.yml -f docker-compose.{{ env }}.yml stop
+    args:
+      chdir: /var/projects/{{ project_name }}-{{ env }}/
+ 
+  - name: start project
+    shell: docker-compose -f docker-compose.yml -f docker-compose.{{ env }}.yml up --build -d
+    args:
+      chdir: /var/projects/{{ project_name }}-{{ env }}/

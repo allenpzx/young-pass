@@ -1,0 +1,25 @@
+version: '2'
+services:
+  nginx:
+    container_name: ${PROJECT_NAME}-stage-nginx
+    environment:
+      VIRTUAL_HOST: ${STAGE_VIRTUAL_HOST}
+      LETSENCRYPT_HOST: ${STAGE_VIRTUAL_HOST}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+    restart: always
+    networks:
+      - nginx-proxy
+      - default
+
+  web:
+    container_name: ${PROJECT_NAME}-stage-node
+    environment: 
+      WECHAT_BACK_URI: test.wechat.heyyoung.net
+    restart: always
+    networks:
+      - default
+
+networks:
+  nginx-proxy:
+    external:
+      name: nginxproxyservice_default
