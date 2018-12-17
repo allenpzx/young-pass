@@ -1,7 +1,7 @@
 import csshook from 'css-modules-require-hook/preset';
 import assethook from 'asset-require-hook';
 import React from 'react';
-import {renderToString} from 'react-dom/server';
+import {renderToString, renderToNodeStream} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
 import App from '../src/App.js';
 import { htmlTemplate } from './html-template.js';
@@ -15,14 +15,19 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 9093;
+const buildPath = require('../build/asset-manifest.json');
+
 
 app.use(express.static('build'));
 app.get('*', (req, res, next) => {
+    if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
+        return next()
+    }
 
     console.log('req.url', req.url.startsWith('/user/'));
 
     const context = {};
-    const html = renderToString(
+    const html = renderToNodeStream(
         <Provider store={store}>
             <StaticRouter
                 location={req.url}
@@ -39,7 +44,19 @@ app.get('*', (req, res, next) => {
         });
         res.end();
     } else {
-        res.send(htmlTemplate('YoungPass学生特权卡', html));
+
+        html.pipe(res, { end: false })
+        html.on('end', () => {
+            res.write(`
+                </div>
+                <script src="/${buildPath['main.js']}"></script>
+                </body>
+            </html>
+            `)
+            res.end()
+        });
+
+        // res.send(htmlTemplate('YoungPass学生特权卡', html, buildPath));
     }
 })
 
