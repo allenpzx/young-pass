@@ -3,7 +3,7 @@
 Running any of these commands will create a directory called my-app inside the current folder. Inside that directory, it will generate the initial project structure and install the transitive dependencies:
 
 ```
-my-app
+Project-path
 ├── README.md
 ├── LICENSE
 ├── node_modules
