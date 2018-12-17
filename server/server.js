@@ -4,14 +4,14 @@ import React from 'react';
 import {renderToString, renderToNodeStream} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
 import App from '../src/App.js';
-import { htmlTemplate } from './html-template.js';
+// import { htmlTemplate } from './html-template.js';
 import { store } from '../src/redux/index.js';
 import { Provider } from 'react-redux';
 
 assethook({
     extensions: ['png', 'jpg', 'ico', 'svg']
 });
-const path = require('path');
+
 const express = require('express');
 const app = express();
 const PORT = 9093;
@@ -20,11 +20,10 @@ const buildPath = require('../build/asset-manifest.json');
 
 app.use(express.static('build'));
 app.get('*', (req, res, next) => {
+
     if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
         return next()
     }
-
-    console.log('req.url', req.url.startsWith('/user/'));
 
     const context = {};
     const html = renderToNodeStream(
@@ -37,7 +36,6 @@ app.get('*', (req, res, next) => {
             </StaticRouter>
         </Provider>
     )
-
     if (context.url) {
         res.writeHead(301, {
           Location: context.url

@@ -1,10 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
+
+Running any of these commands will create a directory called my-app inside the current folder. Inside that directory, it will generate the initial project structure and install the transitive dependencies:
+
+```
+my-app
+├── README.md
+├── LICENSE
+├── node_modules
+├── package.json
+├── yarn.lock
+├── yarn-error.log
+├── .gitignore
+├── .babelrc
+├── .cmrh.config.js
+├── .config-override.js
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── server
+│   ├── html-template.js
+│   └── server.js
+└── src
+    ├── asset
+    ├── component
+    ├── page
+    ├── redux
+    ├── utils
+    ├── test
+    ├── App.js
+    ├── index.js
+    └── serviceWorker.js
+```
+
+### `npm install || yarn`
+After clone this project and before ant opration you should run this script to download all dependencies.<br /><br /><br />
 
 In the project directory, you can run:
 
-### `npm start || yarn start`
+### `npm run deploy || yarn deploy`
+This opration can deploy the front-end files on production environment.<br>
+Open [http://localhost:9093](http://localhost:9093) to view it in the browser.
 
-Runs the app in the development mode.<br>
+### `npm start || yarn start`
+Runs the app in development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will automatically reload if you make changes to the code.
+You will see the build errors and lint warnings in the console.
+
+### `npm build || yarn build`
+Builds the app for production to the build folder.
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.
+
+Your app is ready to be deployed.
+
+### `npm test || yarn test`
+Runs the test watcher in an interactive mode.
+By default, runs tests related to files changed since the last commit.
+
+[Read more about testing](https://facebook.github.io/create-react-app/docs/running-tests).

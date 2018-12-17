@@ -25,7 +25,8 @@
     "test": "react-app-rewired test --env=jsdom",
     "dev": "concurrently \"yarn start-dev-server\" \"yarn build-dev-file\"",
     "start-dev-server": "cross-env NODE_ENV=development ./node_modules/.bin/nodemon --exec babel-node server/server.js",
-    "build-dev-file": "cross-env NODE_ENV=development yarn start"
+    "build-dev-file": "cross-env NODE_ENV=development yarn start",
+    "deploy": ""
   },
   "eslintConfig": {
     "extends": "react-app"
