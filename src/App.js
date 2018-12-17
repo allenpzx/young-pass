@@ -8,7 +8,7 @@ import {setCount} from './redux/count.js';
 import { Button } from 'antd';
 // import logo from './logo.svg';
 // const logo = require('./logo.svg');
-// import axios from 'axios';
+import axios from 'axios';
 
 @withRouter
 @connect(
@@ -40,7 +40,8 @@ class App extends Component {
     // .catch(e=>{
     //   console.log(e);
     // })
-    console.log('component is mounted!');
+    
+    console.log('component is mounted!', window.__PRELOADED_STATE__);
   }
 
   render() {
@@ -48,7 +49,9 @@ class App extends Component {
     return (
       <div className="App">
          <img src={require('./asset/image/logo.svg')} className="App-logo" alt="logo" />
-         ceshi4424234sdfsfs
+         <br />
+         <br />
+         <br />
          <br />
          <br />
          <br />

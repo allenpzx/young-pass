@@ -4,9 +4,10 @@ import React from 'react';
 import {renderToString, renderToNodeStream} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
 import App from '../src/App.js';
-// import { htmlTemplate } from './html-template.js';
-import { store } from '../src/redux/index.js';
+import { htmlTemplate } from './html-template.js';
 import { Provider } from 'react-redux';
+import {createStore} from 'redux';
+import {reducers} from '../src/redux/index.js';
 
 assethook({
     extensions: ['png', 'jpg', 'ico', 'svg']
@@ -14,19 +15,24 @@ assethook({
 
 const express = require('express');
 const app = express();
-const PORT = 9096;
+const PORT = 9093;
 const buildPath = require('../build/asset-manifest.json');
 
-
 app.use(express.static('build'));
-app.get('*', (req, res, next) => {
+app.use((req, res, next) => {
 
-    if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
-        return next()
-    }
+    // if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
+    //     return next()
+    // }
+
+    console.log('req.url', req.url)
+
+    const store = createStore(reducers);
+    store.dispatch({type: 'ADD'});
+    store.dispatch({type: 'ADD'});
 
     const context = {};
-    const html = renderToNodeStream(
+    const rootElement = renderToString(
         <Provider store={store}>
             <StaticRouter
                 location={req.url}
@@ -36,6 +42,7 @@ app.get('*', (req, res, next) => {
             </StaticRouter>
         </Provider>
     )
+
     if (context.url) {
         res.writeHead(301, {
           Location: context.url
@@ -43,18 +50,20 @@ app.get('*', (req, res, next) => {
         res.end();
     } else {
 
-        html.pipe(res, { end: false })
-        html.on('end', () => {
-            res.write(`
-                </div>
-                <script src="/${buildPath['main.js']}"></script>
-                </body>
-            </html>
-            `)
-            res.end()
-        });
+        const finalState = store.getState();
+        // html.pipe(res, { end: false })
+        // html.on('end', () => {
+        //     res.write(`
+        //             </div>
+        //             <script src="${buildPath['main.js']}"></script>
+        //             <script>window.__PRELOADED_STATE__ = ${JSON.stringify(finalState).replace(/</g,'\\u003c')}</script>
+        //         </body>
+        //         </html>
+        //     `)
+        //     res.end()
+        // });
 
-        // res.send(htmlTemplate('YoungPass学生特权卡', html, buildPath));
+        res.send(htmlTemplate('YoungPass学生特权卡', rootElement, buildPath, finalState));
     }
 })
 
