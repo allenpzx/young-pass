@@ -14,7 +14,7 @@ assethook({
 
 const express = require('express');
 const app = express();
-const PORT = 9093;
+const PORT = 9096;
 const buildPath = require('../build/asset-manifest.json');
 
 

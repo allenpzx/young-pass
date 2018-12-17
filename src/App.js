@@ -8,7 +8,7 @@ import {setCount} from './redux/count.js';
 import { Button } from 'antd';
 // import logo from './logo.svg';
 // const logo = require('./logo.svg');
-import axios from 'axios';
+// import axios from 'axios';
 
 @withRouter
 @connect(
@@ -26,7 +26,7 @@ class App extends Component {
     text: 'default'
   }
 
-  // componentDidMount(){
+  componentDidMount(){
 
     // axios.get('https://cnodejs.org/', {
     //   headers:{
@@ -40,8 +40,8 @@ class App extends Component {
     // .catch(e=>{
     //   console.log(e);
     // })
-    // console.log('component is mounted!');
-  // }
+    console.log('component is mounted!');
+  }
 
   render() {
     console.log(this.props)
