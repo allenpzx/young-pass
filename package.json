@@ -49,5 +49,5 @@
     "nodemon": "^1.18.8",
     "react-app-rewired": "^1.6.2"
   },
-  "proxy": "localhost:9093"
+  "proxy": "http://localhost:9093"
 }
