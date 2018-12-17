@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-import './App.css';
+import './asset/style/App.css';
 import {Route, Link, withRouter} from 'react-router-dom';
 import Home from './page/pc-static/home.jsx';
 import Youngpass from './page/pc-static/youngpass.jsx';
 import { connect } from 'react-redux';
 import {setCount} from './redux/count.js';
+import { Button } from 'antd';
+// import logo from './logo.svg';
+// const logo = require('./logo.svg');
+import axios from 'axios';
 
 @withRouter
 @connect(
@@ -18,11 +21,33 @@ import {setCount} from './redux/count.js';
   })
 )
 class App extends Component {
+
+  state = {
+    text: 'default'
+  }
+
+  componentDidMount(){
+
+    axios.get('https://cnodejs.org/', {
+      headers:{
+        'Content-Type':'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+    .then(res=>{
+      console.log(res);
+    })
+    .catch(e=>{
+      console.log(e);
+    })
+    console.log('component is mounted!');
+  }
+
   render() {
     console.log(this.props)
     return (
       <div className="App">
-         {/* <img src={logo} className="App-logo" alt="logo" /> */}
+         <img src={require('./asset/image/logo.svg')} className="App-logo" alt="logo" />
          ceshi4424234sdfsfs
          <br />
          <br />
@@ -36,6 +61,19 @@ class App extends Component {
         <br />
         <button onClick={this.props.add}>add</button><br />
         <button onClick={this.props.subtract}>subtract</button><br />
+
+        <br />
+        <br />
+        <br />
+
+        {this.state.text}
+
+        <Button onClick={()=>{
+          this.setState({text: 'ceshi'})
+        }}>
+          ceshi setstate
+        </Button>
+
       </div>
     );
   }
