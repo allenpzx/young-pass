@@ -26,22 +26,22 @@ class App extends Component {
     text: 'default'
   }
 
-  componentDidMount(){
+  // componentDidMount(){
 
-    axios.get('https://cnodejs.org/', {
-      headers:{
-        'Content-Type':'application/x-www-form-urlencoded',
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
-    .then(res=>{
-      console.log(res);
-    })
-    .catch(e=>{
-      console.log(e);
-    })
-    console.log('component is mounted!');
-  }
+    // axios.get('https://cnodejs.org/', {
+    //   headers:{
+    //     'Content-Type':'application/x-www-form-urlencoded',
+    //     'Access-Control-Allow-Origin': '*'
+    //   }
+    // })
+    // .then(res=>{
+    //   console.log(res);
+    // })
+    // .catch(e=>{
+    //   console.log(e);
+    // })
+    // console.log('component is mounted!');
+  // }
 
   render() {
     console.log(this.props)
