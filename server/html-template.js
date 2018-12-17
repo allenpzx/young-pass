@@ -1,4 +1,4 @@
-export const htmlTemplate = (title, RootEle, buildPath, payload) =>`
+export const htmlTemplate = (title, rootElement, buildPath, payload) =>`
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -15,7 +15,7 @@ export const htmlTemplate = (title, RootEle, buildPath, payload) =>`
         <noscript>
             You need to enable JavaScript to run this app.
         </noscript>
-        <div id="root">${RootEle}</div>
+        <div id="root">${rootElement}</div>
         <script src="${buildPath['main.js']}"></script>
         <script>window.__PRELOADED_STATE__ = ${JSON.stringify(payload).replace(/</g, '\\u003c')}</script>
     </body>
