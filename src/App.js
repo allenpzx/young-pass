@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import {Route, Link, withRouter} from 'react-router-dom';
 import Home from './page/pc-static/home.jsx';
 import Youngpass from './page/pc-static/youngpass.jsx';
 import { connect } from 'react-redux';
 import {setCount} from './redux/count.js';
+// import logo from './logo.svg';
+// const logo = require('./logo.svg');
 
 @withRouter
 @connect(
@@ -18,11 +19,20 @@ import {setCount} from './redux/count.js';
   })
 )
 class App extends Component {
+
+  state = {
+    text: 'default'
+  }
+
+  componentDidMount(){
+    console.log('component is mounted!');
+  }
+
   render() {
     console.log(this.props)
     return (
       <div className="App">
-         {/* <img src={logo} className="App-logo" alt="logo" /> */}
+         <img src={require('./logo.svg')} className="App-logo" alt="logo" />
          ceshi4424234sdfsfs
          <br />
          <br />
@@ -36,6 +46,19 @@ class App extends Component {
         <br />
         <button onClick={this.props.add}>add</button><br />
         <button onClick={this.props.subtract}>subtract</button><br />
+
+        <br />
+        <br />
+        <br />
+
+        {this.state.text}
+
+        <button onClick={()=>{
+          this.setState({text: 'ceshi'})
+        }}>
+          ceshi setstate
+        </button>
+
       </div>
     );
   }

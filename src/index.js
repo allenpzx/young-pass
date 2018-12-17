@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {store} from './redux/index.js';
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
     <BrowserRouter>
