@@ -21,50 +21,40 @@ const buildPath = require(path.resolve(__dirname, '../build/asset-manifest.json'
 
 app.use(express.static(path.join(__dirname, '../build')));
 
-app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
-});
-// app.get('*', (req, res, next) => {
+// SPA will do
+// app.get('/*', function (req, res) {
+//     res.sendFile(path.join(__dirname, '../build', 'index.html'));
+// });
 
-//     const store = createStore(reducers);
-//     store.dispatch({type: 'ADD'});
-//     store.dispatch({type: 'ADD'});
+app.get('*', (req, res, next) => {
 
-//     const context = {};
-//     const rootElement = renderToString(
-//         <Provider store={store}>
-//             <StaticRouter
-//                 location={req.url}
-//                 context={context}
-//             >
-//                 <App/>
-//             </StaticRouter>
-//         </Provider>
-//     )
+    const store = createStore(reducers);
+    store.dispatch({type: 'ADD'});
+    store.dispatch({type: 'ADD'});
 
-//     if (context.url) {
-//         res.writeHead(301, {
-//           Location: context.url
-//         });
-//         res.end();
-//     } else {
+    const context = {};
+    const rootElement = renderToString(
+        <Provider store={store}>
+            <StaticRouter
+                location={req.url}
+                context={context}
+            >
+                <App/>
+            </StaticRouter>
+        </Provider>
+    )
 
-//         const finalState = store.getState();
-//         // html.pipe(res, { end: false })
-//         // html.on('end', () => {
-//         //     res.write(`
-//         //             </div>
-//         //             <script src="${buildPath['main.js']}"></script>
-//         //             <script>window.__PRELOADED_STATE__ = ${JSON.stringify(finalState).replace(/</g,'\\u003c')}</script>
-//         //         </body>
-//         //         </html>
-//         //     `)
-//         //     res.end()
-//         // });
-
-//         res.send(htmlTemplate('YoungPass学生特权卡', rootElement, buildPath, finalState));
-//     }
-// })
+    if (context.url) {
+        res.writeHead(301, {
+          Location: context.url
+        });
+        res.end();
+    } else {
+        
+        const finalState = store.getState();
+        res.send(htmlTemplate('YoungPass学生特权卡', rootElement, buildPath, finalState));
+    }
+})
 
 app.listen(PORT, (error) => {
     if (error) {

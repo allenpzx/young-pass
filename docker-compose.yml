@@ -14,7 +14,7 @@ services:
     expose:
       - "3000"
     entrypoint:
-      - "yarn"
-      - "deploy"
+      - "npm run deploy"
+      # - "deploy"
     volumes:
       - "./:/usr/src/app"
