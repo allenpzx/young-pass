@@ -24,7 +24,7 @@
     "test": "react-app-rewired test --env=jsdom",
     "start-dev-server": "cross-env NODE_ENV=development ./node_modules/.bin/nodemon --exec babel-node server/server.js",
     "start-prod-server": "cross-env NODE_ENV=production ./node_modules/.bin/nodemon --exec babel-node server/server.js",
-    "deploy": "yarn && yarn run build && yarn run start-prod-server"
+    "deploy": "yarn && npm run build && yarn run start-prod-server"
   },
   "eslintConfig": {
     "extends": "react-app"

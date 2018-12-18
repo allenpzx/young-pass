@@ -22,10 +22,10 @@ const buildPath = require('../build/asset-manifest.json');
 app.use(express.static('build'));
 app.use((req, res, next) => {
 
-    if(req.url !== '/'){
-        return res.sendFile(path.resolve(__dirname, '../build/index.html'));
-    }
-    console.log(req.url)
+    // if(req.url !== '/'){
+    //     return res.sendFile(path.resolve(__dirname, '../build/index.html'));
+    // }
+    // console.log(req.url)
 
     const store = createStore(reducers);
     store.dispatch({type: 'ADD'});

@@ -6,6 +6,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {reducers} from './redux/index.js';
+import 'antd/dist/antd.css';
 
 const store = createStore(reducers, window.__PRELOADED_STATE__);
 
