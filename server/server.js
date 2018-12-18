@@ -13,6 +13,7 @@ assethook({
     extensions: ['png', 'jpg', 'ico', 'svg']
 });
 
+const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 9093;
@@ -21,11 +22,10 @@ const buildPath = require('../build/asset-manifest.json');
 app.use(express.static('build'));
 app.use((req, res, next) => {
 
-    // if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
-    //     return next()
-    // }
-
-    console.log('req.url', req.url)
+    if(req.url !== '/'){
+        return res.sendFile(path.resolve(__dirname, '../build/index.html'));
+    }
+    console.log(req.url)
 
     const store = createStore(reducers);
     store.dispatch({type: 'ADD'});
