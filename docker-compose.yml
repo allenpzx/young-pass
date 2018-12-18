@@ -14,7 +14,8 @@ services:
     expose:
       - "9093"
     entrypoint:
-      - "npm run deploy"
-      # - "deploy"
+      - "npm"
+      - "run"
+      - "deploy"
     volumes:
       - "./:/usr/src/app"
