@@ -8,7 +8,7 @@ import {setCount} from './redux/count.js';
 import { Button } from 'antd';
 // import logo from './logo.svg';
 // const logo = require('./logo.svg');
-import axios from 'axios';
+// import axios from 'axios';
 
 @withRouter
 @connect(

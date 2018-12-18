@@ -17,7 +17,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 9093;
-const buildPath = require('../build/asset-manifest.json');
+const buildPath = require(path.resolve(__dirname, '../build/asset-manifest.json'));
 
 app.use(express.static('build'));
 app.use((req, res, next) => {
