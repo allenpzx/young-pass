@@ -7,6 +7,7 @@
     "antd": "^3.11.2",
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.11.0",
+    "cheerio": "^1.0.0-rc.2",
     "concurrently": "^4.1.0",
     "css-modules-require-hook": "^4.2.3",
     "express": "^4.16.4",
@@ -24,7 +25,7 @@
     "test": "react-app-rewired test --env=jsdom",
     "start-dev-server": "cross-env NODE_ENV=development nodemon --exec babel-node server/index.js",
     "start-prod-server": "cross-env NODE_ENV=production nodemon --exec babel-node server/index.js",
-    "deploy": "npm install && npm run build && npm run start-prod-server"
+    "deploy": "yarn && yarn build && yarn start-prod-server"
   },
   "eslintConfig": {
     "extends": "react-app"

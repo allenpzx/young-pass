@@ -4,7 +4,6 @@ import React from 'react';
 import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
 import App from '../src/App.js';
-// import { htmlTemplate } from './html-template.js';
 import { Provider } from 'react-redux';
 import {createStore} from 'redux';
 import {reducers} from '../src/redux/index.js';
@@ -14,13 +13,13 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 const PORT = 9093;
+const cheerio = require('cheerio');
 
 assethook({
     extensions: ['png', 'jpg', 'ico', 'svg'],
     name: '[name].[hash:8].[ext]',
     publicPath: '/static/media/',
 });
-// const buildPath = require(path.resolve(__dirname, '../build/asset-manifest.json'));
 
 app.use(express.static(path.join(__dirname, '../build')));
 
@@ -54,15 +53,12 @@ app.get('/*', (req, res) => {
         res.end();
     } else {
         const finalState = store.getState();
-        // res.send(htmlTemplate('YoungPass学生特权卡', rootElement, buildPath, finalState));
-
         const template = fs.readFileSync(path.resolve(__dirname, '../build/index.html'), 'utf8');
-        const afterInjectDom = template.replace('<div id="root"></div>', `<div id="root">${rootElement}</div>`);
-        // const injectPoint = template.replace('<div id="root"></div>', rootElement).indexOf("</body>")
-        // const page = afterInjectDom.slice(0, injectPoint) + `<script>window.__PRELOADED_STATE__ = ${JSON.stringify(finalState).replace(/</g, '\\u003c')}</script>` + afterInjectDom.slice(injectPoint);
-
-        // res.send(page);
-        res.send(afterInjectDom);
+        const $ = cheerio.load(template);
+        $('div#root').html(rootElement);
+        $('body').append(`<script>window.__PRELOADED_STATE__ = ${JSON.stringify(finalState).replace(/</g, '\\u003c')}</script>`);
+        const finalPage = $.html();
+        res.send(finalPage);
     }
 })
 
