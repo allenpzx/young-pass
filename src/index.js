@@ -7,6 +7,7 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {reducers} from './redux/index.js';
 import 'antd/dist/antd.css';
+import './utils/axios.config.js';
 
 const store = createStore(reducers, window.__PRELOADED_STATE__);
 
