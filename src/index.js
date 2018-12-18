@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom';
+import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {store} from './redux/index.js';
+import {reducers} from './redux/index.js';
+import 'antd/dist/antd.css';
+import './utils/axios.config.js';
+
+const store = createStore(reducers, window.__PRELOADED_STATE__);
 
 ReactDOM.hydrate(
     <BrowserRouter>

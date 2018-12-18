@@ -1,32 +1,28 @@
-import csshook from 'css-modules-require-hook/preset';
-import assethook from 'asset-require-hook';
 import React from 'react';
-import {renderToString, renderToNodeStream} from 'react-dom/server';
+import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
 import App from '../src/App.js';
-// import { htmlTemplate } from './html-template.js';
-import { store } from '../src/redux/index.js';
 import { Provider } from 'react-redux';
+import {createStore} from 'redux';
+import {reducers} from '../src/redux/index.js';
 
-assethook({
-    extensions: ['png', 'jpg', 'ico', 'svg']
-});
-
+const path = require('path');
+const fs = require('fs');
 const express = require('express');
 const app = express();
-const PORT = 9093;
-const buildPath = require('../build/asset-manifest.json');
+const PORT = 9090;
+const cheerio = require('cheerio');
 
+app.use(express.static(path.join(__dirname, '../build')));
 
-app.use(express.static('build'));
-app.get('*', (req, res, next) => {
+app.get('/*', (req, res) => {
 
-    if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
-        return next()
-    }
+    const store = createStore(reducers);
+    store.dispatch({type: 'ADD'});
+    store.dispatch({type: 'ADD'});
 
     const context = {};
-    const html = renderToNodeStream(
+    const rootElement = renderToString(
         <Provider store={store}>
             <StaticRouter
                 location={req.url}
@@ -36,27 +32,27 @@ app.get('*', (req, res, next) => {
             </StaticRouter>
         </Provider>
     )
+
     if (context.url) {
         res.writeHead(301, {
           Location: context.url
         });
         res.end();
     } else {
-
-        html.pipe(res, { end: false })
-        html.on('end', () => {
-            res.write(`
-                </div>
-                <script src="/${buildPath['main.js']}"></script>
-                </body>
-            </html>
-            `)
-            res.end()
-        });
-
-        // res.send(htmlTemplate('YoungPass学生特权卡', html, buildPath));
+        // const finalState = store.getState();
+        const template = fs.readFileSync(path.resolve(__dirname, '../build/index.html'), 'utf8');
+        const $ = cheerio.load(template);
+        $('div#root').html(rootElement);
+        $('div#root').after(`<script>window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState()).replace(/</g, '\\u003c')}</script>`);
+        const finalPage = $.html();
+        res.send(finalPage);
     }
 })
+
+// SPA will do
+// app.get('/*', function (req, res) {
+//     res.sendFile(path.join(__dirname, '../build', 'index.html'));
+// });
 
 app.listen(PORT, (error) => {
     if (error) {

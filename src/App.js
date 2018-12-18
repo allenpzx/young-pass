@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import './asset/style/App.css';
+import './asset/css/App.css';
 import {Route, Link, withRouter} from 'react-router-dom';
 import Home from './page/pc-static/home.jsx';
 import Youngpass from './page/pc-static/youngpass.jsx';
 import { connect } from 'react-redux';
 import {setCount} from './redux/count.js';
 import { Button } from 'antd';
-// import logo from './logo.svg';
-// const logo = require('./logo.svg');
 import axios from 'axios';
+// import OldPC from './page/pc/pages/home.jsx';
 
 @withRouter
 @connect(
@@ -28,19 +27,15 @@ class App extends Component {
 
   componentDidMount(){
 
-    axios.get('https://cnodejs.org/', {
-      headers:{
-        'Content-Type':'application/x-www-form-urlencoded',
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
+    axios.get('https://cnodejs.org/api/v1/topics')
     .then(res=>{
       console.log(res);
     })
     .catch(e=>{
       console.log(e);
     })
-    console.log('component is mounted!');
+    
+    console.log('component is mounted!', window.__PRELOADED_STATE__);
   }
 
   render() {
@@ -48,7 +43,9 @@ class App extends Component {
     return (
       <div className="App">
          <img src={require('./asset/image/logo.svg')} className="App-logo" alt="logo" />
-         ceshi4424234sdfsfs
+         <br />
+         <br />
+         <br />
          <br />
          <br />
          <br />
@@ -73,6 +70,8 @@ class App extends Component {
         }}>
           ceshi setstate
         </Button>
+
+        {/* <OldPC /> */}
 
       </div>
     );
