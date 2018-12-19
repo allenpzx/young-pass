@@ -10,7 +10,7 @@ const path = require('path');
 const fs = require('fs');
 const express = require('express');
 const app = express();
-const PORT = 9696;
+const PORT = 9090;
 const cheerio = require('cheerio');
 
 // const AuthChecker = require('auth-checker.js');
@@ -50,11 +50,6 @@ app.get('/*', (req, res) => {
         res.send(finalPage);
     }
 })
-
-// SPA will do
-// app.get('/*', function (req, res) {
-//     res.sendFile(path.join(__dirname, '../build', 'index.html'));
-// });
 
 app.listen(PORT, (error) => {
     if (error) {
