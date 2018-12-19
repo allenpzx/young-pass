@@ -26,7 +26,7 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "dev:server": "yarn && yarn build && cross-env NODE_ENV=development ./node_modules/.bin/nodemon --exec babel-node server",
-    "prod:server": "cross-env NODE_ENV=production ./node_modules/.bin/ babel-node dist/index.js",
+    "prod:server": "cross-env NODE_ENV=production ./node_modules/.bin/babel-node dist/index.js",
     "deploy": "npm install && npm run build && ./node_modules/.bin/babel server --out-dir dist && cross-env NODE_ENV=production ./node_modules/.bin/babel-node dist"
   },
   "eslintConfig": {
