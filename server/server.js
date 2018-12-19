@@ -13,8 +13,10 @@ const app = express();
 const PORT = 9696;
 const cheerio = require('cheerio');
 
-app.use(express.static(path.join(__dirname, '../build')));
+// const AuthChecker = require('auth-checker.js');
+// app.use(AuthChecker());
 
+app.use(express.static(path.join(__dirname, '../build')));
 app.get('/*', (req, res) => {
 
     const store = createStore(reducers);
