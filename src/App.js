@@ -64,15 +64,16 @@ class App extends Component {
         <br />
 
         {this.state.text}
-
+        
         <Button onClick={()=>{
           this.setState({text: 'ceshi'})
         }}>
           ceshi setstate
         </Button>
 
-        {/* <OldPC /> */}
-
+        <React.Suspense fallback={<div>Loading...</div>}>
+          {/* <OldPC /> */}
+        </React.Suspense>
       </div>
     );
   }

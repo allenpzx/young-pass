@@ -11,7 +11,7 @@ import './utils/axios.config.js';
 
 const store = createStore(reducers, window.__PRELOADED_STATE__);
 
-ReactDOM.hydrate(
+ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
             <App />
