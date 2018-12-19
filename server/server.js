@@ -10,7 +10,7 @@ const path = require('path');
 const fs = require('fs');
 const express = require('express');
 const app = express();
-const PORT = 3090;
+const PORT = 9696;
 const cheerio = require('cheerio');
 
 app.use(express.static(path.join(__dirname, '../build')));
@@ -43,7 +43,7 @@ app.get('/*', (req, res) => {
         const template = fs.readFileSync(path.resolve(__dirname, '../build/index.html'), 'utf8');
         const $ = cheerio.load(template);
         $('div#root').html(rootElement);
-        $('div#root').after(`<script>window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState()).replace(/</g, '\\u003c')}</script>`);
+        $('head').append(`<script>window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState()).replace(/</g, '\\u003c')}</script>`);
         const finalPage = $.html();
         res.send(finalPage);
     }

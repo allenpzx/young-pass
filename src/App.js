@@ -71,9 +71,6 @@ class App extends Component {
           ceshi setstate
         </Button>
 
-        <React.Suspense fallback={<div>Loading...</div>}>
-          {/* <OldPC /> */}
-        </React.Suspense>
       </div>
     );
   }

@@ -23,7 +23,7 @@ var fs = require('fs');
 var express = require('express');
 
 var app = express();
-var PORT = 9090;
+var PORT = 3090;
 
 var cheerio = require('cheerio');
 
@@ -54,7 +54,7 @@ app.get('/*', function (req, res) {
     var template = fs.readFileSync(path.resolve(__dirname, '../build/index.html'), 'utf8');
     var $ = cheerio.load(template);
     $('div#root').html(rootElement);
-    $('div#root').after("<script>window.__PRELOADED_STATE__ = ".concat(JSON.stringify(store.getState()).replace(/</g, "\\u003c"), "</script>"));
+    $('head').append("<script>window.__PRELOADED_STATE__ = ".concat(JSON.stringify(store.getState()).replace(/</g, "\\u003c"), "</script>"));
     var finalPage = $.html();
     res.send(finalPage);
   }
