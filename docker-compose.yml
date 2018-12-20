@@ -12,7 +12,7 @@ services:
     container_name: ${PROJECT_NAME}-node
     working_dir: /usr/src/app
     expose:
-      - "9090"
+      - "3000"
     entrypoint:
       - "yarn"
       - "deploy"
