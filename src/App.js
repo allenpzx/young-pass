@@ -7,9 +7,12 @@ import { connect } from 'react-redux';
 import {setCount} from './redux/count.js';
 import { Button } from 'antd';
 import axios from 'axios';
-// import BigBundle from './page/pc-static/bigbundle.jsx';
+import { Skeleton } from 'antd';
 import loadable from '@loadable/component'
-const OtherComponent = loadable(() => import('./page/pc-static/bigbundle.jsx'))
+
+const OtherComponent = loadable(() => import('./page/pc-static/bigbundle.jsx'), {
+    fallback: <Skeleton />,
+})
 @withRouter
 @connect(
   state=>({
@@ -23,7 +26,8 @@ const OtherComponent = loadable(() => import('./page/pc-static/bigbundle.jsx'))
 class App extends Component {
 
   state = {
-    text: 'default'
+    text: 'default',
+    ceshi: false
   }
 
   componentDidMount(){
@@ -37,6 +41,10 @@ class App extends Component {
     })
     
     console.log('component is mounted!', window.__PRELOADED_STATE__);
+
+    setTimeout(()=>{
+      this.setState({ceshi: true})
+    }, 2000)
   }
 
   render() {
@@ -72,9 +80,8 @@ class App extends Component {
           ceshi setstate
         </Button>
 
-        <React.Suspense fallback={<div>Loading...</div>}>
-          <OtherComponent />
-        </React.Suspense>
+        <OtherComponent />
+
       </div>
     );
   }

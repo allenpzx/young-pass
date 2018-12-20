@@ -2,6 +2,15 @@
 
 Running any of these commands will create a directory called my-app inside the current folder. Inside that directory, it will generate the initial project structure and install the transitive dependencies:
 
+**Main stack**
+- Server: express
+- Render: create-react-app (without eject use react-app-rewired)
+- UI library: antd
+- Status management: redux
+- Route: react-router-dom
+- Code splitting: Loadable component
+- Modular import: babel-plugin-import
+
 ```
 Project-path
 ├── README.md
