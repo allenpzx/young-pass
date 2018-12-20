@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import './asset/css/App.css';
-import {Route, Link, withRouter} from 'react-router-dom';
-import Home from './page/pc-static/home.jsx';
-import Youngpass from './page/pc-static/youngpass.jsx';
+import {Route, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {setCount} from './redux/count.js';
-import { Button } from 'antd';
-import axios from 'axios';
 import { Skeleton } from 'antd';
 import loadable from '@loadable/component'
-
-const OtherComponent = loadable(() => import('./page/pc-static/bigbundle.jsx'), {
-    fallback: <Skeleton />
+const OldPC = loadable(() => import('./page/pc/entry.jsx'), {
+    fallback: <Skeleton active size={'large'} rows='20'/>
 })
 @withRouter
 @connect(
@@ -24,66 +19,11 @@ const OtherComponent = loadable(() => import('./page/pc-static/bigbundle.jsx'), 
   })
 )
 class App extends Component {
-
-  state = {
-    text: 'default',
-    ceshi: false
-  }
-
-  componentDidMount(){
-
-    axios.get('https://cnodejs.org/api/v1/topics')
-    .then(res=>{
-      console.log(res);
-    })
-    .catch(e=>{
-      console.log(e);
-    })
-    
-    console.log('component is mounted!', window.__PRELOADED_STATE__);
-
-    setTimeout(()=>{
-      this.setState({ceshi: true})
-    }, 2000)
-  }
-
   render() {
     console.log(this.props)
     return (
       <div className="App">
-         <img src={require('./asset/image/logo.svg')} className="App-logo" alt="logo" />
-         <br />
-         <br />
-         <br />
-         <br />
-         <br />
-         <br />
-        <Link to='/home'>home</Link> <br />
-        <Link to='/youngpass'>youngpass</Link><br /><br /><br />
-        <Route path='/home' component={Home} />
-        <Route path='/youngpass' component={Youngpass} />
-        <br />
-        {this.props.count}
-        <br />
-        <button onClick={this.props.add}>add</button><br />
-        <button onClick={this.props.subtract}>subtract</button><br />
-
-        <br />
-        <br />
-        <br />
-
-        {this.state.text}
-        
-        <Button onClick={()=>{
-          this.setState({text: 'ceshi'})
-        }}>
-          ceshi setstate
-        </Button>
-
-        <OtherComponent>
-          {({ default: moment }) => moment()}
-        </OtherComponent>
-
+        <Route path='/static' component={OldPC} />
       </div>
     );
   }

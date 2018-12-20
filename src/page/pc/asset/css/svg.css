@@ -1,0 +1,47 @@
+#bottom-wave-svg{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+}
+
+#wave-svg{
+        border: 1px solid red;
+        margin-bottom: 0;
+        margin-top: 79vh;
+        position: relative;
+        z-index: 20;
+}
+
+
+.text{
+        text-anchor: middle;
+        fill: currentColor;
+}
+
+
+#logo-text{
+        stroke-dasharray: 1000 1000;
+        stroke-dashoffset: 0;
+        animation: animLogo 2s infinite;
+}
+
+@keyframes animLogo{
+        0%{
+                stroke-dashoffset: 0%
+
+        }
+        100%{
+                stroke-dashoffset: 100%
+        }
+}
+
+#about-svg{
+        position: relative;
+        z-index: 3;
+        margin-top: -30vh;
+}
+
+#cooperation-svg{
+        position: absolute;
+        bottom: 0;
+}

@@ -1,0 +1,33 @@
+.pc-miniapp .miniapp-content-1 {
+  background-image: url("../pc/images/home-miniapp.jpg"); }
+  .pc-miniapp .miniapp-content-1 img {
+    display: block;
+    width: 22%;
+    z-index: 3;
+    position: absolute;
+    left: 20%;
+    bottom: 0%; }
+.pc-miniapp .miniapp-content-1-title {
+  padding: 2rem;
+  position: relative;
+  margin-left: 20%; }
+  .pc-miniapp .miniapp-content-1-title h3 {
+    margin-left: 20%; }
+  .pc-miniapp .miniapp-content-1-title img {
+    border-radius: 1rem;
+    position: absolute;
+    bottom: -30%;
+    height: 6rem;
+    width: auto; }
+.pc-miniapp .miniapp-content-2 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .pc-miniapp .miniapp-content-2 img {
+    display: block;
+    width: 50%; }
+
+/*# sourceMappingURL=miniapp.css.map */

@@ -1,0 +1,300 @@
+.pc-about {
+  min-height: 100vh;
+  width: 100vw;
+  position: relative; }
+  .pc-about .content-1 {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../pc/images/team.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    text-align: center; }
+
+.content-under-wave {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 0;
+  text-align: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; }
+  @media screen and (max-width: 500px) {
+    .content-under-wave {
+      height: 80vh;
+      justify-content: flex-start; } }
+  .content-under-wave h1 {
+    padding: 2rem; }
+
+.conetent-2 {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white; }
+  .conetent-2 .info {
+    width: 80%;
+    padding: 1rem 2rem; }
+    .conetent-2 .info h1 {
+      margin-bottom: 2rem; }
+  .conetent-2 .icon-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    padding: 1rem 2rem;
+    width: 20%; }
+    .conetent-2 .icon-group svg {
+      height: 3rem; }
+    .conetent-2 .icon-group .shangwu-svg {
+      height: 4rem; }
+
+.about-content-3 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  background-image: url("../pc/images/about-join.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  padding: 3rem 0; }
+  @media screen and (max-width: 500px) {
+    .about-content-3 {
+      background-size: auto 100%; } }
+  .about-content-3 .about-info {
+    padding-bottom: 1rem;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    color: black; }
+    @media screen and (max-width: 500px) {
+      .about-content-3 .about-info {
+        flex-direction: column;
+        width: 100%;
+        align-items: center; } }
+    .about-content-3 .about-info .about-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      padding: 1rem;
+      border-radius: 1rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      margin-right: 1rem;
+      width: 30%; }
+      @media screen and (max-width: 500px) {
+        .about-content-3 .about-info .about-item {
+          width: 80%;
+          margin: 0 0 1rem 0; } }
+      .about-content-3 .about-info .about-item p {
+        text-align: left; }
+      .about-content-3 .about-info .about-item button {
+        z-index: 10;
+        font-size: 0.8rem;
+        color: black;
+        margin-top: 2rem;
+        outline: none;
+        border: none;
+        background-color: #fbe43f;
+        border-radius: 0.5rem;
+        padding: 0.5rem 6rem; }
+
+.radius-rect {
+  width: 100%;
+  margin: 2rem 0;
+  padding: 2rem 0;
+  position: absolute;
+  bottom: 0;
+  background-color: white;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
+  mar-height: 0;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+  .radius-rect i {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    color: yellow;
+    margin-right: 1rem; }
+  .radius-rect .label {
+    width: 80%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; }
+    .radius-rect .label input {
+      width: 80%;
+      height: 2rem;
+      display: flex;
+      flex-grow: 1;
+      background-color: #f6f4f5;
+      border-radius: 1rem;
+      border: none;
+      outline: none;
+      appearance: none;
+      text-align: center; }
+    .radius-rect .label input[type='file'] {
+      position: absolute;
+      opacity: 0;
+      z-index: 1;
+      border: 1px solid red;
+      cursor: pointer;
+      width: 100%;
+      height: 100%; }
+    .radius-rect .label .styled-file-input {
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 80%;
+      height: 2rem;
+      display: flex;
+      flex-grow: 1;
+      background-color: #f6f4f5;
+      border-radius: 1rem;
+      border: none;
+      outline: none; }
+      .radius-rect .label .styled-file-input .fake-input {
+        border: 2px solid red;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        padding: 0.2rem 2rem;
+        display: flex;
+        flex-grow: 1;
+        background-color: #f6f4f5;
+        border-radius: 1rem;
+        border: none;
+        outline: none;
+        appearance: none;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+  .radius-rect .sub-info {
+    width: 100%;
+    font-size: 0.5rem;
+    color: grey;
+    text-align: center; }
+  .radius-rect .submit {
+    z-index: 3;
+    background-color: #fee720;
+    border-radius: 1rem;
+    color: balck; }
+  .radius-rect .pc-triangle-up {
+    outline: none;
+    appearance: none;
+    position: absolute;
+    top: -1.5rem;
+    width: 0;
+    height: 0;
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-bottom: 2rem solid white; }
+
+.show {
+  position: relative;
+  opacity: 1; }
+
+.common-carousel-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden; }
+
+.common-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+  .common-carousel .common-carousel-info {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; }
+    .common-carousel .common-carousel-info h1, .common-carousel .common-carousel-info h3, .common-carousel .common-carousel-info h4 {
+      margin-left: 20%; }
+    .common-carousel .common-carousel-info img {
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      position: absolute; }
+      @media screen and (max-width: 500px) {
+        .common-carousel .common-carousel-info img {
+          height: 100%;
+          width: auto; } }
+  .common-carousel .common-carousel-dot {
+    width: 100%;
+    position: absolute;
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    bottom: 2rem; }
+    .common-carousel .common-carousel-dot li {
+      height: 4rem;
+      width: 4rem;
+      box-sizing: border-box;
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0);
+      transition: all 0.5s;
+      position: relative;
+      overflow: hidden;
+      text-align: center; }
+      .common-carousel .common-carousel-dot li img {
+        display: inline-block;
+        position: relative;
+        left: 0 !important;
+        bottom: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: 50%;
+        height: 50%; }
+      .common-carousel .common-carousel-dot li.slick-active {
+        background-color: white; }
+  .common-carousel .slick-slide {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+
+/*# sourceMappingURL=about.css.map */
