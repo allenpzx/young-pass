@@ -7,8 +7,9 @@ import { connect } from 'react-redux';
 import {setCount} from './redux/count.js';
 import { Button } from 'antd';
 import axios from 'axios';
-// import OldPC from './page/pc/pages/home.jsx';
-
+// import BigBundle from './page/pc-static/bigbundle.jsx';
+import loadable from '@loadable/component'
+const OtherComponent = loadable(() => import('./page/pc-static/bigbundle.jsx'))
 @withRouter
 @connect(
   state=>({
@@ -71,6 +72,9 @@ class App extends Component {
           ceshi setstate
         </Button>
 
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <OtherComponent />
+        </React.Suspense>
       </div>
     );
   }

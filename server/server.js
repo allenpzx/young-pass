@@ -13,9 +13,6 @@ const app = express();
 const PORT = 9090;
 const cheerio = require('cheerio');
 
-// const AuthChecker = require('auth-checker.js');
-// app.use(AuthChecker());
-
 app.use(express.static(path.join(__dirname, '../build')));
 app.get('/*', (req, res) => {
 

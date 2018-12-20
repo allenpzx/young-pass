@@ -23,7 +23,7 @@ var fs = require('fs');
 var express = require('express');
 
 var app = express();
-var PORT = 3090;
+var PORT = 9090;
 
 var cheerio = require('cheerio');
 
@@ -58,11 +58,7 @@ app.get('/*', function (req, res) {
     var finalPage = $.html();
     res.send(finalPage);
   }
-}); // SPA will do
-// app.get('/*', function (req, res) {
-//     res.sendFile(path.join(__dirname, '../build', 'index.html'));
-// });
-
+});
 app.listen(PORT, function (error) {
   if (error) {
     return console.log('something was wrong: ', error);

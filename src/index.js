@@ -8,16 +8,12 @@ import {Provider} from 'react-redux';
 import {reducers} from './redux/index.js';
 import 'antd/dist/antd.css';
 import './utils/axios.config.js';
-import { ErrorBoundary } from './component/error-boundary.js';
-
 const store = createStore(reducers, window.__PRELOADED_STATE__);
 
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
-            <ErrorBoundary>
-                <App />
-            </ErrorBoundary>
+            <App />
         </Provider>
     </BrowserRouter>,
     document.getElementById('root'));
