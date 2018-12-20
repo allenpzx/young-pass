@@ -11,7 +11,7 @@ import { Skeleton } from 'antd';
 import loadable from '@loadable/component'
 
 const OtherComponent = loadable(() => import('./page/pc-static/bigbundle.jsx'), {
-    fallback: <Skeleton />,
+    fallback: <Skeleton />
 })
 @withRouter
 @connect(
@@ -80,7 +80,9 @@ class App extends Component {
           ceshi setstate
         </Button>
 
-        <OtherComponent />
+        <OtherComponent>
+          {({ default: moment }) => moment()}
+        </OtherComponent>
 
       </div>
     );

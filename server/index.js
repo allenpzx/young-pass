@@ -4,7 +4,8 @@ require("@babel/register")({
     plugins: [
         ["@babel/plugin-proposal-decorators",{"legacy": true}],
         "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-syntax-dynamic-import"
+        "@babel/plugin-syntax-dynamic-import",
+        "@loadable/babel-plugin"
     ]
 });
 const csshook = require('css-modules-require-hook');

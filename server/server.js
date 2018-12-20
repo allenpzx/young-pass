@@ -10,11 +10,11 @@ const path = require('path');
 const fs = require('fs');
 const express = require('express');
 const app = express();
-const PORT = 9090;
+const PORT = 3000;
 const cheerio = require('cheerio');
 
 app.use(express.static(path.join(__dirname, '../build')));
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
 
     const store = createStore(reducers);
     store.dispatch({type: 'ADD'});

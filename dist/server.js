@@ -28,7 +28,7 @@ var PORT = 9090;
 var cheerio = require('cheerio');
 
 app.use(express.static(path.join(__dirname, '../build')));
-app.get('/*', function (req, res) {
+app.get('*', function (req, res) {
   var store = (0, _redux.createStore)(_index.reducers);
   store.dispatch({
     type: 'ADD'
