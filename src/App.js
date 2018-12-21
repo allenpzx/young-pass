@@ -7,7 +7,8 @@ import { Skeleton } from 'antd';
 import loadable from '@loadable/component'
 const OldPC = loadable(() => import('./page/pc/entry.jsx'), {
     fallback: <Skeleton active size={'large'} rows='20'/>
-})
+});
+
 @withRouter
 @connect(
   state=>({
@@ -24,6 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route path='/static' component={OldPC} />
+        <Route component={OldPC} />
       </div>
     );
   }

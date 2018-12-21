@@ -2,24 +2,37 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url("../pc/images/youngpass.jpg");
+  background-image: url("../image/youngpass.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100% auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center; }
-  .pc-youngpass .content-1 .get-more {
-    outline: none;
-    cursor: pointer;
-    font-size: 1rem;
-    padding: 1rem 2rem;
-    background-color: #fbe43f;
-    border-radius: 3rem; }
-  .pc-youngpass .content-1 .title {
-    font-size: 1rem;
-    color: white; }
+  align-items: center;
+}
+
+.pc-youngpass .content-1 .get-more {
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  background-color: #fbe43f;
+  border-radius: 3rem;
+}
+
+.pc-youngpass .content-1 .title {
+  font-size: 1rem;
+  color: white;
+}
+
+.pc-youngpass .content-1 .title h1{
+  color: white;
+}
+.pc-youngpass .content-1 .title h4{
+  color: white;
+}
+
 .pc-youngpass .content-2 {
   width: 100vw;
   height: 100vh;
@@ -29,51 +42,72 @@
   justify-content: space-around;
   align-items: center;
   position: relative;
-  padding: 5rem 0; }
-  .pc-youngpass .content-2 .icon-row {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center; }
-    .pc-youngpass .content-2 .icon-row .item {
-      display: flex;
-      flex-direction: column;
-      justify-items: center;
-      align-items: center; }
-      .pc-youngpass .content-2 .icon-row .item svg {
-        height: 3rem;
-        padding-bottom: 1rem; }
+  padding: 5rem 0;
+}
+
+.pc-youngpass .content-2 .icon-row {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pc-youngpass .content-2 .icon-row .item {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.pc-youngpass .content-2 .icon-row .item svg {
+  height: 3rem;
+  padding-bottom: 1rem;
+}
+
 .pc-youngpass .content-3 {
   width: 100vw;
   height: 100vh;
   background-color: white;
-  display: flex; }
+  display: flex;
+}
 
 #content-2-mobile {
   position: relative;
-  background-color: white; }
-  @media screen and (max-width: 500px) {
-    #content-2-mobile {
-      height: 70vh;
-      padding: 0;
-      justify-content: flex-start; }
-      #content-2-mobile h1 {
-        padding-bottom: 30%; } }
-  #content-2-mobile .icon-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    justify-items: center;
-    width: 100%; }
-  #content-2-mobile .item {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center; }
-    #content-2-mobile .item svg {
-      width: 2rem;
-      padding-bottom: 1rem; }
+  background-color: white;
+}
+
+@media screen and (max-width: 500px) {
+  #content-2-mobile {
+    height: 70vh;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  #content-2-mobile h1 {
+    padding-bottom: 30%;
+  }
+}
+
+#content-2-mobile .icon-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  justify-items: center;
+  width: 100%;
+}
+
+#content-2-mobile .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#content-2-mobile .item svg {
+  width: 2rem;
+  padding-bottom: 1rem;
+}
 
 /*# sourceMappingURL=youngpass.css.map */

@@ -6,6 +6,7 @@
     "@babel/plugin-proposal-class-properties": "^7.2.1",
     "@loadable/component": "^5.2.2",
     "@loadable/server": "^5.2.2",
+    "animate.css": "^3.7.0",
     "antd": "^3.11.2",
     "asset-require-hook": "^1.2.0",
     "axios": "^0.18.0",

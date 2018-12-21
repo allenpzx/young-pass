@@ -1,12 +1,12 @@
 import React from 'react';
 import Wave from '../components/symmetry-wave.jsx';
 import BottomWave from '../components/unsymmetry-wave.jsx';
-
+import '../asset/css/youngpass.css';
 export default class YoungPass extends React.Component {
 
     render() {
         return (
-            <div className='pc-youngpass'>
+            <div className='pc-youngpass animated fadeInUp'>
                 <div className='content-1'>
                     <div className='get-more'>了解更多</div>
                     <div className='title'>

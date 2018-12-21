@@ -8,12 +8,16 @@ import {Provider} from 'react-redux';
 import {reducers} from './redux/index.js';
 import 'antd/dist/antd.css';
 import './utils/axios.config.js';
+import 'animate.css';
+import ScrollTop from './component/scroll-top/scroll-top.jsx';
 const store = createStore(reducers, window.__PRELOADED_STATE__);
 
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
-            <App />
+            <ScrollTop>
+                <App />
+            </ScrollTop>
         </Provider>
     </BrowserRouter>,
     document.getElementById('root'));

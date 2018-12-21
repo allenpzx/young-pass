@@ -39,7 +39,7 @@ export default class extends React.Component {
         
         return (
             <div className='wave-carousel'>
-                <Carousel autoplay settings>
+                <Carousel autoplay {...settings} draggable>
                     {
                         this.state.slides.map(v=>(
                             <div className='slick-content' key={Math.random() * 10 + v.content}>

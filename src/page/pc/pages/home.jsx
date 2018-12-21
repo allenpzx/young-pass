@@ -9,7 +9,7 @@ import '../asset/css/svg.css';
 export default class extends React.Component {
     render() {
         return (
-            <div className='pc-home'>
+            <div className='pc-home animated fadeInUp'>
                 <Carousel />
                 <div className='home-underwave'>
                     享受社会给学生的所有福利<br/>
@@ -29,9 +29,9 @@ export default class extends React.Component {
                         </div>
                     </div>
                     <div className='right'>
-                        <img src={require('../asset/image/phone1.png')} alt='miniapp_mockup' />
-                        <img src={require('../asset/image/phone2.png')} alt='miniapp_mockup' />
-                        <img src={require('../asset/image/phone2.png')} alt='miniapp_mockup' />
+                        <img src={require('../asset/image/phone44.png')} alt='miniapp_mockup' />
+                        <img src={require('../asset/image/phone22.png')} alt='miniapp_mockup' />
+                        <img src={require('../asset/image/phone33.png')} alt='miniapp_mockup' />
                     </div>
                 </div>
 

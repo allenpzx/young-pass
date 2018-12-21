@@ -1,8 +1,7 @@
 import React from 'react';
 import SymmetryWave from '../components/symmetry-wave.jsx';
-import _ from 'lodash';
 import Footer from '../components/footer.jsx';
-import { SectionsContainer, Section } from 'react-fullpage';
+import '../asset/css/cooperation.css';
 export default class Cooperation extends React.Component {
 
     constructor(props) {
@@ -11,17 +10,18 @@ export default class Cooperation extends React.Component {
     }
 
     componentDidMount() {
-        this.props.router.listen((route) => {
-            if (route.pathname === '/pc-cooperation') {
-                if (route.hash == '#sectionTwo') {
-                    this.brandAnimation()
-                } else {
-                    this.init()
-                }
-            } else {
-                return
-            }
-        });
+        // this.props.router.listen((route) => {
+        //     if (route.pathname === '/pc-cooperation') {
+        //         if (route.hash == '#sectionTwo') {
+        //             this.brandAnimation()
+        //         } else {
+        //             this.init()
+        //         }
+        //     } else {
+        //         return
+        //     }
+        // });
+        this.init()
     }
 
     init() {
@@ -29,12 +29,7 @@ export default class Cooperation extends React.Component {
         const items = container.children;
         Array.from(items).forEach(v => {
             v.style.transitionDelay = '0s';
-            v.classList.remove('hover')
-            // v.style.transform = 'rotateY(0deg)';
-            // v.style.webkitTransform = 'rotateY(0deg)';
-            // v.style.MozTransform = 'rotateY(0deg)';
-            // v.style.msTransform = 'rotateY(0deg)';
-            // v.style.OTransform = 'rotateY(0deg)';
+            v.classList.remove('hover');
         });
     }
 
@@ -45,10 +40,6 @@ export default class Cooperation extends React.Component {
             Array.from(items).forEach((v, i) => {
                 v.style.transitionDelay = `${i * 0.1}s`;
                 v.classList.add('hover');
-                // v.style.webkitTransform = 'rotateY(180deg)';
-                // v.style.MozTransform = 'rotateY(180deg)';
-                // v.style.msTransform = 'rotateY(180deg)';
-                // v.style.OTransform = 'rotateY(180deg)';
             });
         }
         ani()
@@ -59,7 +50,7 @@ export default class Cooperation extends React.Component {
         const Wave = () => {
             const W = window && window.innerWidth;
             const H = window && window.innerHeight;
-            const svgH = H * 0.3
+            const svgH = H * 0.15
             return (
                 <svg
                     id='cooperation-svg'
@@ -100,7 +91,7 @@ export default class Cooperation extends React.Component {
                 items.push(
                     <div key={i} className='item'>
                         <div className='front'></div>
-                        <div className='back'><img src={require(`../../../../assets/pc/logo/${i}.png`)} alt='brand_logo'/></div>
+                        <div className='back'><img src={require(`../asset/image/logo/${i}.png`)} alt='brand_logo'/></div>
                     </div>
                 )
             }
@@ -108,9 +99,7 @@ export default class Cooperation extends React.Component {
         }
 
         return (
-            <div className='cooperation'>
-                <SectionsContainer ref='sectionContainer' {...options}>
-                    <Section>
+            <div className='cooperation animated fadeInUp'>
                         <div className='content-1'>
                             <h1>链接品牌与学生</h1>
                             <div>
@@ -119,17 +108,13 @@ export default class Cooperation extends React.Component {
                             </div>
                             <SymmetryWave />
                         </div>
-                    </Section>
 
-                    <Section>
                         <div className='content-2'>
                             <h1>部分合作品牌展示</h1>
                             <div ref={x => this.container = x} className='brand-container'>
                                 {BrandWall()}
                             </div>
                         </div>
-                    </Section>
-                    <Section>
                         <div className='content-3'>
                             <h1>与 YoungPass 合作</h1>
                             <div>
@@ -162,8 +147,6 @@ export default class Cooperation extends React.Component {
                             </div>
                             <Wave />
                         </div>
-                    </Section>
-                    <Section>
                         <div className='cooperation-content-4'>
                             <div className='contact'>
                                 <div className='item'>
@@ -174,15 +157,13 @@ export default class Cooperation extends React.Component {
                                     <p>young_bd@shlanyee.com</p>
                                 </div>
                                 <div className='item'>
-                                    <img src={require('../../../../assets/images/W-code.png')} alt='' />
+                                    {/* <img src={require('../asset/image/W-code.png')} alt='' /> */}
                                     <p>YoungPass 客服中心</p>
                                     <p>Wechat: young_mie1</p>
                                 </div>
                             </div>
                         </div>
                         <Footer />
-                    </Section>
-                </SectionsContainer>
             </div>
         )
     }
