@@ -1,17 +1,13 @@
 import React from 'react';
-import { fetcher } from 'react-isomorphic-tools';
-import { SectionsContainer, Section } from 'react-fullpage';
 import Footer from '../components/footer.jsx';
 import CommonCarousel from '../components/common-carousel.jsx';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { toastInfo, toastClear } from '../../../utils/image.js';
-import config from '../../../../config';
-const { baseUrl,origin } = config();
+import { message } from 'antd';
+import axios from 'axios';
+import '../asset/css/about.css';
 export default class About extends React.Component {
 
     handleFile = () => {
-        toastInfo('文件上传成功', {autoClose: 2000});
+        message.loading('文件上传成功', 2000);
         const file = document.querySelector('#order-file') || this.orderFile;
         const info = document.querySelector('.sub-info');
         info.innerText = `文件名称: ${file.files[0].name}`;
@@ -39,40 +35,33 @@ export default class About extends React.Component {
             if (sizeM > 10) {
                 alert('文件大小不能超过10M')
             }else if(name.replace(' ', '') === ''){
-                toastClear()
-                toastInfo('请填写姓名', {autoClose: 2000});
+                message.destroy()
+                message.loading('请填写姓名', 2000);
             }else if(phone.length > 13 || phone.length < 7){
-                toastClear()
-                toastInfo('请填写正确的手机号', {autoClose: 2000});
+                message.destroy()
+                message.loading('请填写正确的手机号', 2000);
             }else if(file.files.length < 1){
-                toastClear()
-                toastInfo('请上传简历', {autoClose: 2000});
+                message.destroy()
+                message.loading('请上传简历', 2000);
             }else {
 
-                console.log(baseUrl,origin)
                 const fd = new FormData();
                 fd.append('file', file.files[0]);
                 fd.append('phone_number', phone);
                 fd.append('name',name);
 
-                fetch(`${baseUrl}/send-cv`, {
+                axios(`https://api.heyyoung.com.cn/api/v1/send-cv`, {
                     method: 'POST',
-                    // add below code will error
-                    // headers: {
-                    //   'Content-Type': 'multipart/form-data'
-                    // },
                     body: fd
                 }).then(res=>{
-                    console.log(res);
                     if(res.status === 200){
-                        toastClear()
-                        toastInfo('提交成功请耐心等待', {autoClose: 2000});
+                        message.destroy()
+                        message.loading('提交成功请耐心等待', 2000);
                     }
 
                 }).catch(err=>{
-                    console.log(err);
-                    toastClear()
-                    toastInfo(`提交错误:${err}, 请刷新重试或联系小黑羊客服`, {autoClose: 2000});
+                    message.destroy()
+                    message.loading(`提交错误:${err}, 请刷新重试或联系小黑羊客服`, 2000);
                     throw err
                 })
             }
@@ -133,21 +122,8 @@ export default class About extends React.Component {
             )
         }
 
-        const options = {
-            sectionClassName: 'section',
-            anchors: ['sectionA', 'sectionB', 'sectionC', 'sectionD'],
-            scrollBar: false,
-            navigation: true,
-            verticalAlign: false,
-            arrowNavigation: true,
-            delay: 1000,
-            autoScrolling: false,
-        };
-
         return (
             <div className='pc-about'>
-                <SectionsContainer {...options}>
-                    <Section>
                         <div className='content-1'>
                             <h1>关于我们</h1>
 
@@ -157,8 +133,6 @@ export default class About extends React.Component {
                             <h3>一方面为学生群体争取 到各种各样高价值、低门槛的消费福利及娱乐活动 机会。</h3>
                         </div>
                         <Wave />
-                    </Section>
-                    <Section>
                         <div className='content-under-wave'>
                             <h1>“除了好好学习 还要热爱生活！”</h1>
 
@@ -168,13 +142,11 @@ export default class About extends React.Component {
                             <h4>尽情享受旅行、购物、娱乐、美食等</h4>
                             <h4>用有限的生活费发现无限的新体验</h4>
                         </div>
-                    </Section>
-                    <Section>
+
                         <div className='conetent-2'>
                             <CommonCarousel />
                         </div>
-                    </Section>
-                    <Section>
+
                         <div className='about-content-3'>
                             <h1>加入我们</h1>
                             <h3>公司氛围团结、快节奏、活泼、脑洞大</h3>
@@ -233,68 +205,7 @@ export default class About extends React.Component {
                             </div>
                         </div>
                         <Footer />
-                    </Section>
-                </SectionsContainer>
-                <div className='about-content-3'>
-                            <h1>加入我们</h1>
-                            <h3>公司氛围团结、快节奏、活泼、脑洞大</h3>
-                            <div className='about-info'>
-                                <div className='about-item'>
-                                    <h2>市场部</h2>
-                                    <p>
-                                        我们需要你<br />
-                                        头脑灵活，路子野！<br />
-                                        能在有限时间内发掘有效的大学生市场推广<br />
-                                        门道和渠道。 丢掉老套的方法，深度挖掘和<br />
-                                        塑造自己都会接纳和喜爱的推广方式。<br />
-                                        <br />
-                                        能说会道，擅社交<br />
-                                        能在与各个合作推广方的交流中有效表达沟<br />
-                                        通，达成1+1>2的合作推广。 合作推广方涵<br />
-                                        盖：大型学生组织、社媒推广服务商等。<br />
-                                        <br />
-                                        敢想敢拼，有抱负！<br />
-                                        你所有靠谱和不靠谱的想法都将有实践的可<br />
-                                        能，所以你要敢想敢做， 并敢于接受社会反<br />
-                                        馈的激励和打击！<br />
-                                        <br />
-                                        活力四射，够年轻！<br />
-                                        我们不接受二十几岁却想着平淡无奇、得过<br />
-                                        且过的成员加入。 二十几岁的肉体还不够，<br />
-                                        我们要二十几岁的灵魂！<br />
-                                    </p>
-                                    <button onClick={() => this.handleForm(1)}>申请职位</button>
-                                    <RadiusRect order={1} />
-                                </div>
-                                <div className='about-item'>
-                                    <h2>品牌管理</h2>
-                                    <p>
-                                        我们需要你 <br />
-                                        头脑灵活，路子野！<br />
-                                        不要局限在定式思维里，已学习到的可以受 <br />
-                                        用于未来的工作，但绝不仅仅于此。<br />
-                                        <br />
-                                        工作效率高，能力强！<br />
-                                        善于分析与观察，有独立见解，能按指标高<br />
-                                        质量地完成团队leader给的任务。<br />
-                                        <br />
-                                        关心时尚，够敏锐！<br />
-                                        熟悉国内外时尚品牌，对年轻人喜爱的品牌<br />
-                                        尤其敏感，有创造力和创新精神。<br />
-                                        <br />
-                                        活力四射，够年轻！<br />
-                                        我们不接受二十几岁却想着平淡无奇、得过<br />
-                                        且过的成员加入。 二十几岁的肉体还不够，<br />
-                                        我们要二十几岁的灵魂！<br />
-                                    </p>
-                                    <button onClick={() => this.handleForm(2)}>申请职位</button>
-                                    <RadiusRect order={2} />
-                                </div>
-                            </div>
-                        </div>
-                        <Footer />
-                <ToastContainer />
-            </div>
+                </div>
         )
     }
 }

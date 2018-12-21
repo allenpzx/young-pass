@@ -10,22 +10,52 @@ export default class Cooperation extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.router.listen((route) => {
-        //     if (route.pathname === '/pc-cooperation') {
-        //         if (route.hash == '#sectionTwo') {
-        //             this.brandAnimation()
-        //         } else {
-        //             this.init()
-        //         }
-        //     } else {
-        //         return
-        //     }
-        // });
-        this.init()
+        window.addEventListener('scroll', this.pockerAnimate);
+    }
+
+    componentDidUpdate() {
+        if(this.props.location.pathname !== "/cooperation"){
+            window.removeEventListener('scroll', this.pockerAnimate);
+        }
+    }
+
+    componentWillUnMount(){
+        window.removeEventListener('scroll', this.pockerAnimate);        
+    }
+
+    pockerAnimate = () => {
+        
+        if(this.timer){
+            const t = new Date().getTime();
+            const disT = (t-this.timer) * 0.001;
+            if(disT<0.8){
+                return
+            }else{
+                const newT = new Date().getTime();
+                this.timer = newT;
+            }
+           
+        }else{
+            let t = new Date().getTime();
+            this.timer = t
+        }
+
+        const ele = document.getElementById('brand-container') || this.container;
+        const scroll_pos = window.pageYOffset || document.documentElement.scrollTop + window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        const element_pos = ele.offsetTop - ele.offsetHeight * 0.5;
+
+        console.log(scroll_pos, element_pos)
+        if (scroll_pos > element_pos) {
+            if(scroll_pos > ele.offsetTop + ele.offsetHeight){
+                this.init()
+                return 
+            }
+            this.brandAnimation();
+        };
     }
 
     init() {
-        const container = document.querySelector('.brand-container');
+        const container = document.getElementById('brand-container') || this.container;
         const items = container.children;
         Array.from(items).forEach(v => {
             v.style.transitionDelay = '0s';
@@ -73,18 +103,6 @@ export default class Cooperation extends React.Component {
             )
         }
 
-        const options = {
-            sectionClassName: 'section',
-            anchors: ['sectionOne', 'sectionTwo', 'sectionThree', 'sectionFour'],
-            scrollBar: false,
-            navigation: true,
-            verticalAlign: false,
-            arrowNavigation: true,
-            delay: 1000,
-            autoScrolling: false,
-            className: 'cooperation-section-container'
-        };
-
         const BrandWall = () => {
             const items = [];
             for(var i=1; i<20; i++){
@@ -111,7 +129,7 @@ export default class Cooperation extends React.Component {
 
                         <div className='content-2'>
                             <h1>部分合作品牌展示</h1>
-                            <div ref={x => this.container = x} className='brand-container'>
+                            <div id='brand-container' ref={x => this.container = x} className='brand-container'>
                                 {BrandWall()}
                             </div>
                         </div>
@@ -157,7 +175,7 @@ export default class Cooperation extends React.Component {
                                     <p>young_bd@shlanyee.com</p>
                                 </div>
                                 <div className='item'>
-                                    {/* <img src={require('../asset/image/W-code.png')} alt='' /> */}
+                                    <img src={require('../asset/image/W-code.png')} alt='' />
                                     <p>YoungPass 客服中心</p>
                                     <p>Wechat: young_mie1</p>
                                 </div>

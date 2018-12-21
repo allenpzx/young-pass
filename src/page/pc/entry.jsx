@@ -4,6 +4,8 @@ import Home from './pages/home.jsx';
 import YoungPass from './pages/youngpass.jsx';
 import {Route, Switch} from 'react-router-dom';
 import Cooperation from './pages/cooperation.jsx';
+import About from './pages/about.jsx';
+import MiniApp from './pages/miniapp.jsx';
 
 export default class extends React.Component {
   render(){
@@ -13,7 +15,8 @@ export default class extends React.Component {
             <Route path='/home' component={Home} />
             <Route path='/youngpass' component={YoungPass} />
             <Route path='/cooperation' component={Cooperation} />
-            {/* <Route component={Maintain} /> */}
+            <Route path='/about' component={About} />
+            <Route path='/miniapp' component={MiniApp} />
           </Switch>
         </Layout>
     )

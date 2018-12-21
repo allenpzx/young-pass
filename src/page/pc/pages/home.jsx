@@ -24,7 +24,7 @@ export default class extends React.Component {
                             <span>申领YoungPass学生特权卡 体验自 定义学生福利</span>
                         </div>
                         <div className='left-down'>
-                            <img src={'https://cdn.heyyoung.com.cn/isolate_mini_qrcode.jpg'} alt="qr-code" />
+                            <img src='https://cdn.heyyoung.com.cn/isolate_mini_qrcode.jpg' alt="qr-code" />
                             <span>扫码进入</span>
                         </div>
                     </div>
