@@ -17,6 +17,7 @@ export default class extends React.Component {
             <Route path='/cooperation' component={Cooperation} />
             <Route path='/about' component={About} />
             <Route path='/miniapp' component={MiniApp} />
+            <Route component={Home} />
           </Switch>
         </Layout>
     )

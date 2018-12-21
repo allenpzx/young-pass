@@ -13,17 +13,21 @@ export default class Cooperation extends React.Component {
         window.addEventListener('scroll', this.pockerAnimate);
     }
 
-    componentDidUpdate() {
-        if(this.props.location.pathname !== "/cooperation"){
-            window.removeEventListener('scroll', this.pockerAnimate);
-        }
-    }
+    // componentDidUpdate() {
+    //     if(this.props.location.pathname !== "/cooperation"){
+    //         window.removeEventListener('scroll', this.pockerAnimate);
+    //     }
+    // }
 
     componentWillUnMount(){
         window.removeEventListener('scroll', this.pockerAnimate);        
     }
 
     pockerAnimate = () => {
+
+        if(this.props.location.pathname !== '/cooperation'){
+            return
+        }
         
         if(this.timer){
             const t = new Date().getTime();
@@ -41,13 +45,17 @@ export default class Cooperation extends React.Component {
         }
 
         const ele = document.getElementById('brand-container') || this.container;
-        const scroll_pos = window.pageYOffset || document.documentElement.scrollTop + window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-        const element_pos = ele.offsetTop - ele.offsetHeight * 0.5;
+        // console.log(ele)
+        if(!ele){
+            return
+        }
 
-        console.log(scroll_pos, element_pos)
+        const scroll_pos = window.pageYOffset || document.documentElement.scrollTop + window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        const element_pos = ele.offsetTop - ele.offsetHeight * 0.9;
+
         if (scroll_pos > element_pos) {
             if(scroll_pos > ele.offsetTop + ele.offsetHeight){
-                this.init()
+                window.removeEventListener('scroll', this.pockerAnimate);
                 return 
             }
             this.brandAnimation();
