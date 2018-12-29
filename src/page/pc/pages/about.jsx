@@ -4,7 +4,11 @@ import CommonCarousel from '../components/common-carousel.jsx';
 import { message } from 'antd';
 import axios from 'axios';
 import '../asset/css/about.css';
-export default class About extends React.Component {
+import config from '../../../utils/project.config.js';
+import {withRouter} from 'react-router-dom';
+const isMobile = config.isMobile();
+@withRouter
+class About extends React.Component {
 
     handleFile = () => {
         message.loading('文件上传成功', 2000);
@@ -87,8 +91,8 @@ export default class About extends React.Component {
                         stroke='white'
                         strokeWidth='1px'
                         d={`
-                            M0 0
-                            C${W * 0.25} ${svgH * 0.618} ${W * 0.75} ${svgH * 0.618} ${W} 00
+                            M0 ${H*0.08}
+                            C${W * 0.25} ${svgH * 0.618} ${W * 0.75} ${svgH * 0.618} ${W} ${H*0.08}
                             L${W} ${svgH}
                             L0 ${svgH}
                             Z
@@ -126,11 +130,11 @@ export default class About extends React.Component {
             <div className='pc-about'>
                         <div className='content-1'>
                             <h1>关于我们</h1>
-
-                            <h3>YoungPass是中国首家独立运营的学生特权集合平 台，由全90后来自全球各高校的年轻人创立。</h3>
-                            <h3>我们致力于找到品牌与青年学生之间良性优质的互 动机制，</h3>
-                            <h3>一方面为优质的品牌沉淀青年客群、拉长 品牌客户的消费生命周期，</h3>
-                            <h3>一方面为学生群体争取 到各种各样高价值、低门槛的消费福利及娱乐活动 机会。</h3>
+                            {isMobile&&<button className='get-more' onClick={()=>this.props.history.push('/miniapp')}>了解更多</button>}
+                            {!isMobile && <h3>YoungPass是中国首家独立运营的学生特权集合平 台，由全90后来自全球各高校的年轻人创立。</h3>}
+                            {!isMobile && <h3>我们致力于找到品牌与青年学生之间良性优质的互 动机制，</h3>}
+                            {!isMobile && <h3>一方面为优质的品牌沉淀青年客群、拉长 品牌客户的消费生命周期，</h3>}
+                            {!isMobile && <h3>一方面为学生群体争取 到各种各样高价值、低门槛的消费福利及娱乐活动 机会。</h3>}
                         </div>
                         <Wave />
                         <div className='content-under-wave'>
@@ -209,3 +213,4 @@ export default class About extends React.Component {
         )
     }
 }
+export default About

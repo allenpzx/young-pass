@@ -16,7 +16,7 @@ export default class MiniApp extends React.Component {
                                 <img src='https://cdn.heyyoung.com.cn/isolate_mini_qrcode.jpg' alt={'miniappQRCode'}/>
                             </div>
                             <SymmetryWave />
-                            <img src={require('../asset/image/phone1.png')} alt={'phone1'} />
+                            <img className='phone-mockup' src={require('../asset/image/phone1.png')} alt={'phone1'} />
                         </div>
                         <div id='ceshi2' className='miniapp-content-2'>
                             <h1>自定义你的品牌权益</h1>

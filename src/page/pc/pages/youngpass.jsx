@@ -8,11 +8,11 @@ export default class YoungPass extends React.Component {
         return (
             <div className='pc-youngpass animated fadeInUp'>
                 <div className='content-1'>
-                    <div className='get-more'>了解更多</div>
                     <div className='title'>
                         <h1>YoungPass 会员计划</h1>
                         <h4>黑卡学生会员将享受更多学生 特权 快来加入我们吧</h4>
                     </div>
+                    <div className='get-more'>了解更多</div>
                     <Wave />
                 </div>
                 <div className='content-2' style={{height: '80vh'}}>

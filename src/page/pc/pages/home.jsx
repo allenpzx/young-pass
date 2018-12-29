@@ -5,7 +5,8 @@ import Footer from '../components/footer.jsx';
 import '../asset/css/home.css';
 import '../asset/css/layout.css';
 import '../asset/css/svg.css';
-
+import config from '../../../utils/project.config.js';
+const isMobile = config.isMobile();
 export default class extends React.Component {
     render() {
         return (
@@ -17,7 +18,7 @@ export default class extends React.Component {
                     找到最爱的品牌及活动福利机会<br />
                     加入最会玩的学生社群
                 </div>
-                <div className='home-content'>
+                {isMobile ? null : (<div className='home-content'>
                     <div className='left'>
                         <div className='left-top'>
                             <h1>YoungPass微信小程序</h1>
@@ -33,7 +34,7 @@ export default class extends React.Component {
                         <img src={require('../asset/image/phone22.png')} alt='miniapp_mockup' />
                         <img src={require('../asset/image/phone33.png')} alt='miniapp_mockup' />
                     </div>
-                </div>
+                </div>)}
 
                 <div className='home-content-2' style={{height: '80vh'}}>
                     <h1>YoungPass学生特权使用指南</h1>
