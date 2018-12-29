@@ -12,6 +12,7 @@ import 'animate.css';
 import ScrollTop from './component/scroll-top/scroll-top.jsx';
 const store = createStore(reducers, window.__PRELOADED_STATE__);
 
+
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>

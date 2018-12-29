@@ -21,7 +21,6 @@ const OldPC = loadable(() => import('./page/pc/entry.jsx'), {
 )
 class App extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="App">
         <Route path='/static' component={OldPC} />
