@@ -142,16 +142,18 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: flex-start;
   width: 80%;
 }
 
 .home-content-2 .icon-item {
-  /* padding: 2rem 4rem; */
+  padding: 2rem 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* flex-grow: 0; */
+  /* flex-shrink: 0; */
 }
 
 @media screen and (max-width: 500px) {
