@@ -9,9 +9,8 @@ import {reducers} from './redux/index.js';
 import 'antd/dist/antd.css';
 import './utils/axios.config.js';
 import 'animate.css';
-import ScrollTop from './component/scroll-top/scroll-top.jsx';
+import ScrollTop from './components/scroll-top/scroll-top.jsx';
 const store = createStore(reducers, window.__PRELOADED_STATE__);
-
 
 ReactDOM.render(
     <BrowserRouter>
