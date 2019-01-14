@@ -41,5 +41,4 @@ router.get('*', (req, res) => {
         res.send(finalPage);
     }
 });
-
 module.exports = router
