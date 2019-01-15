@@ -1,29 +1,28 @@
 const devConfig = {
     baseUrl: 'http://localhost:9093',
     origin: '',
-    https: true
+    https: true,
+    CDN_IMAGE_HOST: 'cdn.youngpass.cn'
 }
 
 const prodConfig = {
-    baseUrl: 'http://localhost:9094',
+    baseUrl: 'http://localhost:9093',
     origin: '',
-    https: true
+    https: true,
+    CDN_IMAGE_HOST: 'cdn.youngpass.cn'
 }
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
-const isBrowser = () => {
-    if(typeof window !== undefined && typeof document !== undefined){
+const isMobile = () => {
+    if (typeof window.orientation !== 'undefined') {
         return true
+    }else{
+        return false
     }
 }
 
-const isMobile = () => {
-
-}
-
 export default {
-    config,
-    isBrowser,
+    ...config,
     isMobile
 }

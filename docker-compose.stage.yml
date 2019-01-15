@@ -14,7 +14,7 @@ services:
   web:
     container_name: ${PROJECT_NAME}-stage-node
     environment:
-      QINIU_URL: ${STAGE_QINIU_URL}
+      CDN_IMAGES_URL: ${STAGE_CDN_IMAGES_URL}
     restart: always
     networks:
       - default

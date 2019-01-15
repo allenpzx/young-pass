@@ -1,21 +1,17 @@
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
-import App from '../src/App.js';
+import App from '../../src/App.js';
 import { Provider } from 'react-redux';
 import {createStore} from 'redux';
-import {reducers} from '../src/redux/index.js';
+import {reducers} from '../../src/redux/index.js';
 const path = require('path');
 const fs = require('fs');
 const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 9090;
+const router = express.Router();
 const cheerio = require('cheerio');
-const dotenv = require('dotenv');
-dotenv.config();
-app
-.use(express.static(path.join(__dirname, '../build')))
-.get('/*', function (req, res, next){
+
+router.get('*', (req, res) => {
 
     const store = createStore(reducers);
     const context = {};
@@ -32,7 +28,7 @@ app
 
     if (context.url) {
         res.writeHead(301, {
-            Location: context.url
+          Location: context.url
         });
         res.end();
     } else {
@@ -44,10 +40,5 @@ app
         const finalPage = $.html();
         res.send(finalPage);
     }
-})
-.listen(PORT, (error) => {
-    if (error) {
-        return console.log('something was wrong: ', error);
-    }
-    console.log(`Example app listening on port ${PORT}!`);
 });
+module.exports = router
