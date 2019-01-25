@@ -8,6 +8,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
 code {
@@ -16,6 +19,9 @@ code {
 }
 
 .App {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
   text-align: center;
 }
 

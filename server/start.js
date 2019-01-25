@@ -3,7 +3,9 @@ require("@babel/register")({
     presets: ["@babel/preset-env", "@babel/preset-react"],
     plugins: [
         ["@babel/plugin-proposal-decorators",{"legacy": true}],
-        "@babel/plugin-proposal-class-properties"
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-syntax-dynamic-import",
+        "@loadable/babel-plugin"
     ]
 });
 const csshook = require('css-modules-require-hook');

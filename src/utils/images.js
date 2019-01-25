@@ -1,0 +1,1 @@
+export const logo = 'http://cdn.event.youngpass.cn/logo.png';

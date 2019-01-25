@@ -2,6 +2,17 @@
 
 Running any of these commands will create a directory called my-app inside the current folder. Inside that directory, it will generate the initial project structure and install the transitive dependencies:
 
+**Main stack**
+- Server: express
+- Request: axios
+- Render: create-react-app (without eject use react-app-rewired)
+- UI library: antd
+- Status management: redux
+- Route: react-router-dom
+- Code splitting: Loadable component
+- Modular import: babel-plugin-import
+
+**Folder Structure**
 ```
 Project-path
 ├── README.md
@@ -33,10 +44,10 @@ Project-path
     └── serviceWorker.js
 ```
 
-### `npm install || yarn`
-After clone this project and before ant opration you should run this script to download all dependencies.<br /><br /><br />
+### In the project directory, you can run:
 
-In the project directory, you can run:
+### `npm install || yarn`
+After clone this project and before ant opration you should run this script to download all dependencies.
 
 ### `npm run deploy || yarn deploy`
 This opration can deploy the front-end files on production environment.<br>

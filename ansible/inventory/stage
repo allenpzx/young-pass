@@ -1,2 +1,2 @@
 [stage]
-172.19.61.235 ansible_ssh_user=root ansible_sudo_pass=Shlanyee926629
+123.206.112.197 ansible_ssh_user=ubuntu ansible_sudo_pass=Shlanyee926629
